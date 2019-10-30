@@ -10,7 +10,7 @@ body {
 }
 
 .container-fluid {
-    padding: 100px 15px 0;
+    padding: 110px 15px 0;
 }
 
 .footer {
@@ -52,7 +52,6 @@ body {
 }
 
 #search-container {
-
     border: 1px solid #bfa8a8;
 }
 #search-title {
@@ -65,4 +64,16 @@ body {
 
 .jumbotron{
     padding: 2rem 2rem;
+}
+
+@media (max-width: 992px) {
+    .footer-text{
+        font-size: .75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-text{
+        font-size: .50rem;
+    }
 }
