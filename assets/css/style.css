@@ -1,6 +1,26 @@
-body{
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--pokeblue);
+    margin-bottom: 100px;
+    /* Margin bottom by footer height */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    border-top: 1px solid #bfa8a8;
+    /* Set the fixed height of the footer here */
+    line-height: 100px;
+    /* Vertically center the text there */
     background-color: var(--pokegray);
 }
+
 
 .navbar-brand img {
     height: 100px;
@@ -9,7 +29,7 @@ body{
 
 .navbar {
     padding: 0px;
-    border-bottom: 1px solid var(--pokeblack);
+    border-bottom: 1px solid #bfa8a8;
     background-color: var(--pokegray);
 }
 
@@ -28,6 +48,14 @@ body{
 }
 
 #search-container {
+    color: white;
     height: 400px;
-    border: 1px solid var(--pokeblack);
+    border: 1px solid #bfa8a8;
+}
+#search-title {
+    color: white;
+}
+
+#input-box{
+    border: 1px solid #bfa8a8;
 }
