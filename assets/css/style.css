@@ -1,3 +1,33 @@
 body{
-    background-color: blueviolet;
+    background-color: var(--pokegray);
+}
+
+.navbar-brand img {
+    height: 100px;
+    padding-left: 25px;
+}
+
+.navbar {
+    padding: 0px;
+    border-bottom: 1px solid var(--pokeblack);
+    background-color: var(--pokegray);
+}
+
+.navbar a, .navbar button, .navbar input {
+    font-size: 1rem;
+}
+
+.fa-plus-square {
+    margin-left: 0px;
+    font-size: 1.5rem;
+}
+
+.fa-plus-square:hover {
+    color: var(--pokeblack);
+    cursor: pointer;
+}
+
+#search-container {
+    height: 400px;
+    border: 1px solid var(--pokeblack);
 }
