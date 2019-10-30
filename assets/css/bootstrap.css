@@ -1,16 +1,3 @@
-/*!
- * Bootswatch v4.3.1
- * Homepage: https://bootswatch.com
- * Copyright 2012-2019 Thomas Park
- * Licensed under MIT
- * Based on Bootstrap
-*/
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,600");
 :root {
   --blue: #007bff;
@@ -34,11 +21,17 @@
   --danger: #d9534f;
   --light: #fff;
   --dark: #343a40;
+  --pokered: #F00000;
+  --pokegray: #F0F0F0;
+  --pokeblack: #222224;
+  --pokenavy: #003A70;
+  --pokeblue: #3D7DCA;
+  --pokeyellow: #FFCB05;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
+  --breakpoint-xl: 1227px;
   --font-family-sans-serif: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -580,7 +573,7 @@ pre code {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .container {
     max-width: 1140px;
   }
@@ -1465,7 +1458,7 @@ pre code {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .col-xl {
     -ms-flex-preferred-size: 0;
         flex-basis: 0;
@@ -3332,7 +3325,7 @@ input[type="button"].btn-block {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .dropdown-menu-xl-left {
     right: auto;
     left: 0;
@@ -4569,7 +4562,7 @@ input[type="button"].btn-block {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .navbar-expand-xl {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -5592,7 +5585,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .list-group-horizontal-xl {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -6067,7 +6060,7 @@ a.close.disabled {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .modal-xl {
     max-width: 1140px;
   }
@@ -7008,7 +7001,7 @@ button.bg-dark:focus {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .d-xl-none {
     display: none !important;
   }
@@ -7786,7 +7779,7 @@ button.bg-dark:focus {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .flex-xl-row {
     -webkit-box-orient: horizontal !important;
     -webkit-box-direction: normal !important;
@@ -7993,7 +7986,7 @@ button.bg-dark:focus {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .float-xl-left {
     float: left !important;
   }
@@ -9642,7 +9635,7 @@ button.bg-dark:focus {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .m-xl-0 {
     margin: 0 !important;
   }
@@ -10057,7 +10050,7 @@ button.bg-dark:focus {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1227px) {
   .text-xl-left {
     text-align: left !important;
   }
