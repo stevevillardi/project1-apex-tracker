@@ -40,6 +40,9 @@ body {
 .navbar a, .navbar button, .navbar input {
     font-size: 1rem;
 }
+.card-title{
+    font-size: .8rem;
+}
 
 .fa-plus-square {
     margin-left: 0px;
@@ -48,6 +51,16 @@ body {
 
 .fa-plus-square:hover {
     color: var(--pokeblack);
+    cursor: pointer;
+}
+
+.fa-minus-square {
+    margin-left: 0px;
+    font-size: 1.5rem;
+}
+
+.fa-minus-square:hover {
+    color: var(--pokered);
     cursor: pointer;
 }
 
@@ -64,6 +77,14 @@ body {
 
 .jumbotron{
     padding: 2rem 2rem;
+}
+
+.pokedex{
+    padding-top: 0px;
+}
+
+.table-sm td {
+
 }
 
 @media (max-width: 992px) {
