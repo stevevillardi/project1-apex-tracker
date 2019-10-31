@@ -1,5 +1,6 @@
 $(document).ready(function() {
     function buildPokedexTable(array){
+        array.sort(function(a,b) { return parseInt(a.number) - parseInt(b.number) } );
         console.log(array);
         for(i=0; i< array.length;i++){
             let table = $("#pokedex-table");
