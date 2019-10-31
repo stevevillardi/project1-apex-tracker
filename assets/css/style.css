@@ -44,9 +44,41 @@ body {
     font-size: .8rem;
 }
 
+#search-error {
+    display: none;
+}
+
+#login-error{
+    display: none;
+}
+
+#add-error {
+    display: none;
+}
+
 .fa-plus-square {
     margin-left: 0px;
     font-size: 1.5rem;
+}
+
+.party-card {
+    position: relative;
+    height: 200px;
+}
+
+.party-card img{
+    position: absolute;
+    top: -25px;
+    right: 0px;
+}
+
+.party-card p{
+    margin-bottom: 0px;
+}
+
+.party-card h5{
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
 .fa-plus-square:hover {
@@ -72,6 +104,11 @@ body {
 }
 
 #input-box{
+    border: 1px solid #bfa8a8;
+}
+
+#email-box{
+    width: 100%;
     border: 1px solid #bfa8a8;
 }
 
