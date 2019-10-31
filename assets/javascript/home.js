@@ -70,7 +70,7 @@ $(document).ready(function() {
         $(slot).empty();
         let cardHeader = `<div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>`
         let cardBody = $("<div>").addClass("card-body text-secondary")
-        let cardText = `<p class="card-text">Search for a Pokémon using and click the plus sign to add them to your party.</p>`
+        let cardText = `<p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>`
         let cardTitle = `<h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="${slotNumber}"></i></h5>`
         $(cardBody).append(cardText,cardTitle)
         $(slot).append(cardHeader,cardBody)
