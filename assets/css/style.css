@@ -64,13 +64,13 @@ tr {
 }
     
 table{
-    height:750px;
+    height:650px;
     display: -moz-groupbox;
     padding: 0px !important;
 }
 tbody{
     overflow-y: scroll;      
-    height: 700px;
+    height: 600px;
     width: 98.4%;
     position: absolute;
     padding: 0px !important;
