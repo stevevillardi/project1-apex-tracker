@@ -56,6 +56,26 @@ body {
     display: none;
 }
 
+tr {
+    width: 100%;
+    display: inline-table;
+    table-layout: fixed;
+    padding: 0px !important;
+}
+    
+table{
+    height:650px;
+    display: -moz-groupbox;
+    padding: 0px !important;
+}
+tbody{
+    overflow-y: scroll;      
+    height: 600px;
+    width: 98.4%;
+    position: absolute;
+    padding: 0px !important;
+}
+
 .fa-plus-square {
     margin-left: 0px;
     font-size: 1.5rem;
@@ -107,6 +127,14 @@ body {
     border: 1px solid #bfa8a8;
 }
 
+#user-display{
+    color: white;
+}
+
+#login{
+    margin-left: 15px;
+}
+
 #email-box{
     width: 100%;
     border: 1px solid #bfa8a8;
@@ -120,9 +148,6 @@ body {
     padding-top: 0px;
 }
 
-.table-sm td {
-
-}
 
 @media (max-width: 992px) {
     .footer-text{

@@ -1,6 +1,5 @@
 $(document).ready(function() {
     let email;
-    let test;
 
     function apiSearch(pokemonName) {
         var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + pokemonName + "/";
@@ -190,6 +189,7 @@ $(document).ready(function() {
         let session = localStorage.getItem("email");
         if (session){
             email = session;
+            $("#user-display").text(`BUILD YOUR BATTLE PARTY (${email}):`);
             $("#login").text("Logout");
             loadParty(email);
         }
@@ -210,6 +210,7 @@ $(document).ready(function() {
         else {
             email = $("#email-box").val();
             localStorage.setItem("email", email);
+            $("#user-display").text(`BUILD YOUR BATTLE PARTY (${email}):`);
             $("#login").text("Logout");
             $("#loginModal").modal('toggle');
             loadParty(email);
@@ -224,6 +225,7 @@ $(document).ready(function() {
             $("#login").text("Login");
             $("#email-box").val("")
             email = null;
+            $("#user-display").text("BUILD YOUR BATTLE PARTY:");
             localStorage.removeItem("email");
             for (i = 1; i < 7 ; i++){
                 let slotCard = $(`[data-slot="${i}"]`).parents().eq(2)
