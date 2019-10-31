@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <title>Poképedia - Gotta beat them all!</title>
+</head>
+<body>
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-xl navbar-light fixed-top">
+        <a class="navbar-brand" href="#"><img src="./assets/images/Pokepedia-logo.png" alt="" srcset=""></a>
+        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse ml-4" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gym.html">Gym Leaders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="pokedex.html">Pokédex</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq.html">FAQ</a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 mr-4">
+              <input class="form-control mr-sm-2" id="input-box" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="submit" type="submit">Search</button>
+              <button type="button" class="btn btn-outline-success" id="login">Login</button>
+              <!-- Button trigger modal -->
+          </form>
+        </div>
+      </nav>
+      <!--Navigation-->
+      
+      <div class="container-fluid">
+        <div class="alert alert-danger alert-dismissible fade show mt-4" id="add-error" role="alert">
+            <strong>ERROR!</strong> You must search for a Pokémon before you can add to your party.
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center mt-4">
+                <h5 id="user-display">Build your battle party:</h5>
+            </div>
+        </div>
+          <div class="row mt-1">
+              <div class="col-xl-2 col-lg-4 col-sm-6">
+                  <div class="card border-secondary mb-3 party-card">
+                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball">
+                      </div>
+                      <div class="card-body text-secondary">
+                          <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
+                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="1"></i></h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-2 col-lg-4 col-sm-6">
+                  <div class="card border-secondary mb-3 party-card">
+                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                      <div class="card-body text-secondary">
+                            <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
+                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="2"></i></h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-2 col-lg-4 col-sm-6">
+                  <div class="card border-secondary mb-3 party-card">
+                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                      <div class="card-body text-secondary">
+                            <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
+                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="3"></i></h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-2 col-lg-4 col-sm-6">
+                  <div class="card border-secondary mb-3 party-card">
+                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                      <div class="card-body text-secondary">
+                            <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
+                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="4"></i></h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-2 col-lg-4 col-sm-6">
+                  <div class="card border-secondary mb-3 party-card">
+                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                      <div class="card-body text-secondary">
+                            <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
+                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="5"></i></h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-2 col-lg-4 col-sm-6">
+                  <div class="card border-secondary mb-3 party-card">
+                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                      <div class="card-body text-secondary">
+                            <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
+                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="6"></i></h5>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12 text-center mt-1">
+                  <h5 id="search-title">Poképedia Search Results:</h5>
+              </div>
+          </div>
+          <div class="row">
+              <div class="container">
+                    <div class="alert alert-danger alert-dismissible fade show" id="search-error" role="alert">
+                        <strong>ERROR!</strong> Unable to find a Pokémon with the entered name, please check spelling and try again.
+                    </div>
+                  <div class="jumbotron" id="search-container">
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="loginModalLabel">Pokepédia Party Login</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                        <div class="alert alert-danger alert-dismissible fade show mt-4" id="login-error" role="alert">
+                            <strong>ERROR!</strong> Please enter an emailadress to login.
+                        </div>
+                        <form class="form-inline my-2 mr-4">
+                            <p>Enter you email address below to allow Pokepedia to save your party members.</p>
+                            <input class="form-control mr-sm-2" id="email-box" type="search" placeholder="Email Address..." aria-label="Search">
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" id="set-email" class="btn btn-outline-success">Load Party</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <span class="text-muted footer-text">UCF Fullstack Development Bootcamp - Project 1 Team 6 (Liam Tate, Steve Villardi, Christan Spence)</span>
+        </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://kit.fontawesome.com/95ef3cb346.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js"></script>
+    <script src="./assets/javascript/firebase-sv.js"></script>
+    <script src="./assets/javascript/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--pokeblue);
+    margin-bottom: 100px;
+    /* Margin bottom by footer height */
+}
+
+.container-fluid {
+    padding: 110px 15px 0;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    border-top: 1px solid #bfa8a8;
+    /* Set the fixed height of the footer here */
+    line-height: 100px;
+    /* Vertically center the text there */
+    background-color: var(--pokegray);
+}
+
+
+.navbar-brand img {
+    height: 100px;
+    padding-left: 25px;
+}
+
+.navbar {
+    padding: 0px;
+    border-bottom: 1px solid #bfa8a8;
+    background-color: var(--pokegray);
+}
+
+.navbar a, .navbar button, .navbar input {
+    font-size: 1rem;
+}
+.card-title{
+    font-size: .8rem;
+}
+
+#search-error {
+    display: none;
+}
+
+#login-error{
+    display: none;
+}
+
+#add-error {
+    display: none;
+}
+
+tr {
+    width: 100%;
+    display: inline-table;
+    table-layout: fixed;
+    padding: 0px !important;
+}
+    
+table{
+    height:750px;
+    display: -moz-groupbox;
+    padding: 0px !important;
+}
+tbody{
+    overflow-y: scroll;      
+    height: 700px;
+    width: 98.4%;
+    position: absolute;
+    padding: 0px !important;
+}
+
+.fa-plus-square {
+    margin-left: 0px;
+    font-size: 1.5rem;
+}
+
+.party-card {
+    position: relative;
+    height: 200px;
+}
+
+.party-card img{
+    position: absolute;
+    top: -25px;
+    right: 0px;
+}
+
+.party-card p{
+    margin-bottom: 0px;
+}
+
+.party-card h5{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.fa-plus-square:hover {
+    color: var(--pokeblack);
+    cursor: pointer;
+}
+
+.fa-minus-square {
+    margin-left: 0px;
+    font-size: 1.5rem;
+}
+
+.fa-minus-square:hover {
+    color: var(--pokered);
+    cursor: pointer;
+}
+
+#search-container {
+    border: 1px solid #bfa8a8;
+}
+#search-title {
+    color: white;
+}
+
+#input-box{
+    border: 1px solid #bfa8a8;
+}
+
+#user-display{
+    color: white;
+}
+
+#login{
+    margin-left: 15px;
+}
+
+#email-box{
+    width: 100%;
+    border: 1px solid #bfa8a8;
+}
+
+.jumbotron{
+    padding: 2rem 2rem;
+}
+
+.pokedex{
+    padding-top: 0px;
+}
+
+
+@media (max-width: 992px) {
+    .footer-text{
+        font-size: .75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-text{
+        font-size: .50rem;
+    }
+}
