@@ -2,14 +2,15 @@ $(document).ready(function() {
     let email;
 
     function apiSearch(pokemonName) {
-        var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + pokemonName + "/";
+        pokemonName = pokemonName.trim().toLowerCase()
+        var pokeURL = `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`;
 
         $.ajax({
             url: pokeURL,
             method: "GET"
         })
         .done(function(results) {
-            pokeURL = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonName + "/";
+            pokeURL = `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}/`;
 
             $.ajax({
                 url: pokeURL,
@@ -33,7 +34,7 @@ $(document).ready(function() {
             });
         })
         .fail(function() {
-            displaySearchError("<strong>ERROR!</strong> You must search for a Pokémon before you can add to your party.");
+            displaySearchError();
         });
     };
 

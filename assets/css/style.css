@@ -61,6 +61,17 @@ tr {
     display: inline-table;
     table-layout: fixed;
     padding: 0px !important;
+    min-height: 80px;
+}
+
+.img-column {
+    position: relative;
+}
+
+.pokedex-img {
+    position: absolute;
+    top: -10px;
+    left: 0px;
 }
     
 table{
@@ -70,7 +81,7 @@ table{
 }
 tbody{
     overflow-y: scroll;      
-    height: 600px;
+    height: 568px;
     width: 98.4%;
     position: absolute;
     padding: 0px !important;
