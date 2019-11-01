@@ -397,6 +397,7 @@ h6, .h6 {
 .lead {
   font-size: 1.09375rem;
   font-weight: 300;
+  color:black;
 }
 
 .display-1 {
