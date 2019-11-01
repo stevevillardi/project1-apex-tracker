@@ -20,7 +20,8 @@ body {
     height: 101px;
     border-top: 1px solid #bfa8a8;
     /* Set the fixed height of the footer here */
-    line-height: 100px;
+    line-height: 5px;
+    padding-top: 40px;
     /* Vertically center the text there */
     background-color: var(--pokegray);
 }
@@ -168,6 +169,6 @@ tbody{
 
 @media (max-width: 768px) {
     .footer-text{
-        font-size: .50rem;
+        font-size: .75rem;
     }
 }
