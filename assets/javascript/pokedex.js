@@ -6,7 +6,7 @@ $(document).ready(function() {
             let table = $("#pokedex-table");
             let tableNum = array[i].number;
             let tableName = array[i].name.toUpperCase();
-            let tableSprite = `<td><img src="${array[i].sprite}" alt="${array[i].name}"></td>`;
+            let tableSprite = `<td><img class="img-fluid pokedex-img" src="${array[i].sprite}" alt="${array[i].name}"></td>`;
             let tableType = array[i].type.toUpperCase();
             let tableAttack = array[i].attack;
             let tableDefense = array[i].defense;
@@ -17,7 +17,7 @@ $(document).ready(function() {
             let newRow = $("<tr>").addClass("table-secondary").append(
                 $("<td>").text(tableNum),
                 $("<td>").text(tableName),
-                $("<td>").html(tableSprite),
+                $(`<td class="img-column">`).html(tableSprite),
                 $("<td>").text(tableType),
                 $("<td>").text(tableAttack),
                 $("<td>").text(tableDefense),
