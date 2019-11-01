@@ -1,5 +1,15 @@
 $(document).ready(function() {
     let email;
+    let path = window.location.pathname;
+    let page = path.split("/").pop();
+    let textBuild;
+
+    if(page === "gym.html"){
+        textBuild =`YOUR SELECTED YOUR BATTLE PARTY`
+    }
+    else{
+        textBuild = `BUILD YOUR BATTLE PARTY`
+    }
 
     function apiSearch(pokemonName) {
         pokemonName = pokemonName.trim().toLowerCase()
@@ -149,8 +159,10 @@ $(document).ready(function() {
             $(cardBody).append(cardText)
             cardText = `<p class="card-text">Speed: ${speed}</p>`
             $(cardBody).append(cardText)
-            let cardTitle = `<h5 class="card-title text-center">Remove from party <i class="far fa-minus-square remove-from-party" data-slot="${slotNumber}"></i></h5>`
-            $(cardBody).append(cardTitle)
+            if(page != "gym.html"){
+                let cardTitle = `<h5 class="card-title text-center">Remove from party <i class="far fa-minus-square remove-from-party" data-slot="${slotNumber}"></i></h5>`
+                $(cardBody).append(cardTitle)
+            }
             $(slot).append(cardHeader,cardBody)
     }
 
@@ -190,7 +202,7 @@ $(document).ready(function() {
         let session = localStorage.getItem("email");
         if (session){
             email = session;
-            $("#user-display").text(`BUILD YOUR BATTLE PARTY (${email}):`);
+            $("#user-display").text(`${textBuild} (${email}):`);
             $("#login").text("Logout");
             loadParty(email);
         }
@@ -210,8 +222,10 @@ $(document).ready(function() {
         }
         else {
             email = $("#email-box").val();
+            email = email.trim().toLowerCase();
             localStorage.setItem("email", email);
-            $("#user-display").text(`BUILD YOUR BATTLE PARTY (${email}):`);
+            $("#user-display").text(`${textBuild} (${email}):`);
+
             $("#login").text("Logout");
             $("#loginModal").modal('toggle');
             loadParty(email);
@@ -226,7 +240,7 @@ $(document).ready(function() {
             $("#login").text("Login");
             $("#email-box").val("")
             email = null;
-            $("#user-display").text("BUILD YOUR BATTLE PARTY:");
+            $("#user-display").text(`${textBuild} (${email}):`);
             localStorage.removeItem("email");
             for (i = 1; i < 7 ; i++){
                 let slotCard = $(`[data-slot="${i}"]`).parents().eq(2)
