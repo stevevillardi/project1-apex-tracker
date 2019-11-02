@@ -32,7 +32,7 @@
                 <a class="nav-link" href="faq.html">FAQ</a>
               </li>
           </ul>
-          <div class="btn-group my-2 mr-5">
+          <div class="btn-group my-2 mr-3">
               <button class="btn btn-outline-success btn dropdown-toggle" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   Select Gym Leader
@@ -56,118 +56,176 @@
                     <a class="dropdown-item" href="#">Gym Leader #8: Juan</a>
               </div>
           </div>
+          <form class="form-inline my-2 mr-5">
+                <button type="button" class="btn btn-outline-success" id="battle">Battle</button>
+                <!-- Button trigger modal -->
+            </form>
         </div>
       </nav>
       <!--Navigation-->
       
-      <div class="container-fluid">
-        <div class="alert alert-danger alert-dismissible fade show mt-4" id="add-error" role="alert">
-            <strong>ERROR!</strong> You must search for a Pokémon before you can add to your party.
-        </div>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 text-center mt-4">
                 <h5 id="user-display">your battle party:</h5>
             </div>
         </div>
-          <div class="row mt-1">
-              <div class="col-xl-2 col-lg-4 col-sm-6">
-                  <div class="card border-secondary mb-3 party-card shadow">
-                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball">
-                      </div>
-                      <div class="card-body text-secondary">
-                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
-                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="1"></i></h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xl-2 col-lg-4 col-sm-6">
-                  <div class="card border-secondary mb-3 party-card shadow">
-                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
-                      <div class="card-body text-secondary">
-                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
-                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="2"></i></h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xl-2 col-lg-4 col-sm-6">
-                  <div class="card border-secondary mb-3 party-card shadow">
-                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
-                      <div class="card-body text-secondary">
-                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
-                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="3"></i></h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xl-2 col-lg-4 col-sm-6">
-                  <div class="card border-secondary mb-3 party-card shadow">
-                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
-                      <div class="card-body text-secondary">
-                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
-                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="4"></i></h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xl-2 col-lg-4 col-sm-6">
-                  <div class="card border-secondary mb-3 party-card shadow">
-                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
-                      <div class="card-body text-secondary">
-                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
-                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="5"></i></h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xl-2 col-lg-4 col-sm-6">
-                  <div class="card border-secondary mb-3 party-card shadow">
-                      <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
-                      <div class="card-body text-secondary">
-                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>
-                          <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="6"></i></h5>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-sm-12 text-center mt-1">
-                  <h5 id="search-title">Poképedia Search Results:</h5>
-              </div>
-          </div>
-          <div class="row">
-              <div class="container">
-                    <div class="alert alert-danger alert-dismissible fade show" id="search-error" role="alert">
-                        <strong>ERROR!</strong> Unable to find a Pokémon with the entered name, please check spelling and try again.
+        <div class="row mt-1">
+            <div class="col-xl-2 col-lg-4 col-sm-6">
+                <div class="card border-secondary mb-3 party-card shadow">
+                    <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball">
                     </div>
-                  <div class="jumbotron shadow" id="search-container">
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="loginModalLabel">Pokepédia Party Login</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                        <div class="alert alert-danger alert-dismissible fade show mt-4" id="login-error" role="alert">
-                            <strong>ERROR!</strong> Please enter an emailadress to login.
-                        </div>
-                        <form class="form-inline my-2 mr-4">
-                            <p>Enter you email address below to allow Pokepedia to save your party members.</p>
-                            <input class="form-control mr-sm-2" id="email-box" type="search" placeholder="Email Address..." aria-label="Search">
-                        </form>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" id="set-email" class="btn btn-outline-success">Load Party</button>
-                  </div>
-              </div>
-          </div>
-      </div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them
+                            to your party.</p>
+                        <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party"
+                                data-slot="1"></i></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-sm-6">
+                <div class="card border-secondary mb-3 party-card shadow">
+                    <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them
+                            to your party.</p>
+                        <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party"
+                                data-slot="2"></i></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-sm-6">
+                <div class="card border-secondary mb-3 party-card shadow">
+                    <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them
+                            to your party.</p>
+                        <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party"
+                                data-slot="3"></i></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-sm-6">
+                <div class="card border-secondary mb-3 party-card shadow">
+                    <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them
+                            to your party.</p>
+                        <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party"
+                                data-slot="4"></i></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-sm-6">
+                <div class="card border-secondary mb-3 party-card shadow">
+                    <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them
+                            to your party.</p>
+                        <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party"
+                                data-slot="5"></i></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-sm-6">
+                <div class="card border-secondary mb-3 party-card shadow">
+                    <div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them
+                            to your party.</p>
+                        <h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party"
+                                data-slot="6"></i></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center mt-1">
+                <img src="./assets/images/player.png" alt="player">
+                <img class="mx-5" src="./assets/images/vs.png" height="70px" alt="vs">
+                <img src="./assets/images/roxanne.png" alt="roxanne">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center mt-4">
+                <h5 id="gymleader-display">Roxanne's battle party:</h5>
+            </div>
+        </div>
+        <div class="row mt-1 justify-content-center">
+            <div class="card border-secondary mb-3 gym-card party-card shadow">
+                <div class="card-header">TREECKO (#252) <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png"
+                        alt="treecko">
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">Pokémon Type: GRASS</p>
+                    <p class="card-text">Attack: 45</p>
+                    <p class="card-text">Defense: 35</p>
+                    <p class="card-text">Speed: 70</p>
+                </div>
+            </div>
+            <div class="card border-secondary mb-3 gym-card party-card shadow">
+                <div class="card-header">PIKACHU (#25) <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="pikachu">
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">Pokémon Type: ELECTRIC</p>
+                    <p class="card-text">Attack: 55</p>
+                    <p class="card-text">Defense: 40</p>
+                    <p class="card-text">Speed: 90</p>
+                </div>
+            </div>
+            <div class="card border-secondary mb-3 gym-card party-card shadow">
+                <div class="card-header">MEW (#151) <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png" alt="mew">
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">Pokémon Type: PSYCHIC</p>
+                    <p class="card-text">Attack: 100</p>
+                    <p class="card-text">Defense: 100</p>
+                    <p class="card-text">Speed: 100</p>
+                </div>
+            </div>
+            <div class="card border-secondary mb-3 gym-card party-card shadow">
+                <div class="card-header">SQUIRTLE (#7) <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="squirtle">
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">Pokémon Type: WATER</p>
+                    <p class="card-text">Attack: 48</p>
+                    <p class="card-text">Defense: 65</p>
+                    <p class="card-text">Speed: 43</p>
+                </div>
+            </div>
+            <div class="card border-secondary mb-3 gym-card party-card shadow">
+                <div class="card-header">EEVEE (#133) <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="eevee">
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">Pokémon Type: NORMAL</p>
+                    <p class="card-text">Attack: 55</p>
+                    <p class="card-text">Defense: 50</p>
+                    <p class="card-text">Speed: 55</p>
+                </div>
+            </div>
+            <div class="card border-secondary mb-3 gym-card party-card shadow">
+                <div class="card-header">PONYTA (#77) <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png" alt="ponyta">
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">Pokémon Type: FIRE</p>
+                    <p class="card-text">Attack: 85</p>
+                    <p class="card-text">Defense: 55</p>
+                    <p class="card-text">Speed: 90</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12 text-center mt-4">
+                    <h5 id="overall-results-display">Your battle party is: <span class="great">SUPER EFFECTIVE</span></h5>
+                </div>
+            </div>
+    </div>
 
       <footer class="footer">
         <div class="container text-center">
@@ -185,6 +243,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js"></script>
     <script src="./assets/javascript/firebase-sv.js"></script>
     <script src="./assets/javascript/home.js"></script>
-    <script src="./assets/javascript/gym.js"></script>
+    <!-- <script src="./assets/javascript/gym.js"></script> -->
 </body>
 </html>
