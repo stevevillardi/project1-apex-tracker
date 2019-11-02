@@ -4,6 +4,7 @@ $(document).ready(function() {
     let page = path.split("/").pop();
     let textBuild;
     let battleType = [];
+    let battleGym;
 
     if(page === "gym.html"){
         textBuild =`YOUR SELECTED YOUR BATTLE PARTY`
@@ -257,6 +258,11 @@ $(document).ready(function() {
                 resetPartyMember(slotCard,i)
             }
         }
+    });
+
+    $(document).on("click",".gym-selector", function(){
+        console.log(`Selected Gym: ${$(this).data("leader")}`)
+        battleGym = $(this).data("leader");
     });
 
     $(document).on("click",".add-to-party", function(){
