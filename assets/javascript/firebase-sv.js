@@ -20,13 +20,15 @@ let ref = database.ref();
 //All of the pokemon in our group
 let partyRef = database.ref("/party-members");
 let pokedexRef = database.ref("/pokedex");
+let gymRef = database.ref("/gym-members");
 
 // Attach an asynchronous callback to read the data at our posts reference
 partyRef.on("value", function(snapshot) {
     console.log(snapshot.val());
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
-  });
+});
+
 let pokemonList;
   function LoadPokedex() {
     var pokeURL = "https://pokeapi.co/api/v2/pokedex/4/";
