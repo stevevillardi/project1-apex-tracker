@@ -120,7 +120,7 @@ $(document).ready(function() {
             });
     
             $(slot).empty();
-            let cardHeader = `<div class="card-header">${name.toUpperCase()} (#${number}) <img src="${sprite}" alt="${name}"></div>`
+            let cardHeader = `<div class="card-header" id="member-${slotNumber -1}" data-type="${type.toUpperCase()}">${name.toUpperCase()} (#${number}) <img src="${sprite}" alt="${name}"></div>`
             let cardBody = $("<div>").addClass("card-body text-secondary")
             let cardText = `<p class="card-text">Pokémon Type: ${type.toUpperCase()}</p>`
             $(cardBody).append(cardText)
@@ -149,7 +149,7 @@ $(document).ready(function() {
             let speed = pokemon.speed;
     
             $(slot).empty();
-            let cardHeader = `<div class="card-header">${name.toUpperCase()} (#${number}) <img src="${sprite}" alt="${name}"></div>`
+            let cardHeader = `<div class="card-header" id="member-${slotNumber -1}" data-type="${type.toUpperCase()}">${name.toUpperCase()} (#${number}) <img src="${sprite}" alt="${name}"></div>`
             let cardBody = $("<div>").addClass("card-body text-secondary")
             let cardText = `<p class="card-text">Pokémon Type: ${type.toUpperCase()}</p>`
             $(cardBody).append(cardText)
@@ -190,6 +190,9 @@ $(document).ready(function() {
                 for (let i = 0; i < partyArray.length ; i++){
                     let slotCard = $(`[data-slot="${partyArray[i].slot}"]`).parents().eq(2)
                     LoadPartyMember(slotCard,partyArray[i].slot,partyArray[i])
+                }
+                for(i=1;i<=6;i++){
+                    console.log($(`#member-${i}`).data("type"))
                 }
             }
             else{

@@ -74,7 +74,7 @@ function ajaxPokemon(pokeId){
         url: "https://pokeapi.co/api/v2/pokemon/" + pokeId,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        //console.log(response);
     })
 }
 
@@ -83,6 +83,6 @@ function ajaxType(typeName){
         url: "https://pokeapi.co/api/v2/type/"+ typeName,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        //console.log(response);
     })
 }
