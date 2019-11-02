@@ -6,11 +6,18 @@ html {
 body {
     background-color: var(--pokeblue);
     margin-bottom: 100px;
+    font-size: 0.850rem;
     /* Margin bottom by footer height */
 }
 
 .container-fluid {
     padding: 110px 15px 0;
+}
+
+.great {
+    font-weight: bold;
+    font-size: 2rem;
+    color: lightgreen;
 }
 
 .footer {
@@ -95,13 +102,17 @@ tbody{
 
 .party-card {
     position: relative;
-    height: 200px;
+    height: 225px;
 }
 
 .party-card img{
     position: absolute;
     top: -25px;
     right: 0px;
+}
+
+.gym-card {
+    width: 210px;
 }
 
 .party-card p{
@@ -139,7 +150,7 @@ tbody{
     border: 1px solid #bfa8a8;
 }
 
-#user-display{
+#user-display, #gymleader-display , #overall-results-display{
     color: white;
 }
 
