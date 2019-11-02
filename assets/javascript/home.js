@@ -3,6 +3,7 @@ $(document).ready(function() {
     let path = window.location.pathname;
     let page = path.split("/").pop();
     let textBuild;
+    let battleType = [];
 
     if(page === "gym.html"){
         textBuild =`YOUR SELECTED YOUR BATTLE PARTY`
@@ -191,10 +192,12 @@ $(document).ready(function() {
                     let slotCard = $(`[data-slot="${partyArray[i].slot}"]`).parents().eq(2)
                     LoadPartyMember(slotCard,partyArray[i].slot,partyArray[i])
                 }
-                for(i=1;i<=6;i++){
-                    console.log($(`#member-${i}`).data("type"))
+                //Grabs pokemon type for array for battle function
+                for(i=0;i<=5;i++){
+                    battleType.push($(`#member-${i}`).data("type"))
+                    console.log(battleType)
                 }
-            }
+            }                        
             else{
                 console.log("nothing to load in firebase")
             }
@@ -208,6 +211,10 @@ $(document).ready(function() {
             $("#user-display").text(`${textBuild} (${email}):`);
             $("#login").text("Logout");
             loadParty(email);
+        }
+        else{
+            battleType.push("NONE","NONE","NONE","NONE","NONE","NONE");
+            console.log(battleType)
         }
     }
 
@@ -243,7 +250,7 @@ $(document).ready(function() {
             $("#login").text("Login");
             $("#email-box").val("")
             email = null;
-            $("#user-display").text(`${textBuild} (${email}):`);
+            $("#user-display").text(`${textBuild}:`);
             localStorage.removeItem("email");
             for (i = 1; i < 7 ; i++){
                 let slotCard = $(`[data-slot="${i}"]`).parents().eq(2)
