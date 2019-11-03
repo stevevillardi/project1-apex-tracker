@@ -111,8 +111,12 @@ tbody{
     right: 0px;
 }
 
+.unknown{
+    top: 7px !important;
+}
+
 .gym-card {
-    width: 210px;
+    width: 275px;
 }
 
 .party-card p{
