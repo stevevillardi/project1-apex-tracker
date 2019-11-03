@@ -33,7 +33,7 @@
               </li>
           </ul>
           <div class="btn-group my-2 mr-3">
-              <button class="btn btn-outline-success btn dropdown-toggle" type="button" data-toggle="dropdown"
+              <button class="btn btn-outline-success btn dropdown-toggle" id="gym-dropdown" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   Select Gym Leader
               </button>
@@ -65,6 +65,8 @@
       <!--Navigation-->
       
     <div class="container-fluid">
+        <div class="alert alert-danger alert-dismissible fade show mt-4" id="add-error" role="alert">
+        </div>
         <div class="row">
             <div class="col-sm-12 text-center mt-4">
                 <h5 id="user-display">your battle party:</h5>
@@ -131,79 +133,80 @@
             <div class="col-sm-12 text-center mt-1">
                 <img src="./assets/images/player.png" alt="player">
                 <img class="mx-5" src="./assets/images/vs.png" height="70px" alt="vs">
-                <img src="./assets/images/roxanne.png" alt="roxanne">
+                <img id="battle-img" src="./assets/images/question.png" alt="question">
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 text-center mt-4">
-                <h5 id="gymleader-display">Roxanne's battle party:</h5>
+                <h5 class ="text-white"><span id="gymleader-display">Your Oppenents </span> battle party:</h5>
             </div>
         </div>
-        <div class="row mt-1 justify-content-center">
-            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="FIRE">
-                <div class="card-header">TREECKO (#252) <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png" alt="treecko">
+        <div class="row mt-1 justify-content-center" id="gym-party">
+            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="NONE">
+                <div class="card-header">??? (#???) <img class="unknown" src="./assets/images/question.png" height="30px" alt="">
                 </div>
                 <div class="card-body text-secondary">
-                    <p class="card-text">Pokémon Type: GRASS</p>
-                    <p class="card-text">Attack: 45</p>
-                    <p class="card-text">Defense: 35</p>
-                    <p class="card-text">Speed: 70</p>
+                    <p class="card-text">Pokémon Type: ???</p>
+                    <p class="card-text">Attack: ???</p>
+                    <p class="card-text">Defense: ???</p>
+                    <p class="card-text">Speed: ???</p>
                 </div>
             </div>
-            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="FIRE">
-                <div class="card-header">PIKACHU (#25) <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="pikachu">
+            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="NONE">
+                    <div class="card-header">??? (#???) <img class="unknown" src="./assets/images/question.png" height="30px" alt="">
                 </div>
                 <div class="card-body text-secondary">
-                    <p class="card-text">Pokémon Type: ELECTRIC</p>
-                    <p class="card-text">Attack: 55</p>
-                    <p class="card-text">Defense: 40</p>
-                    <p class="card-text">Speed: 90</p>
+                    <p class="card-text">Pokémon Type: ???</p>
+                    <p class="card-text">Attack: ???</p>
+                    <p class="card-text">Defense: ???</p>
+                    <p class="card-text">Speed: ???</p>
                 </div>
             </div>
-            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="FIRE">
-                <div class="card-header">MEW (#151) <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png" alt="mew">
+            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="NONE">
+                    <div class="card-header">??? (#???) <img class="unknown" src="./assets/images/question.png" height="30px" alt="">
                 </div>
                 <div class="card-body text-secondary">
-                    <p class="card-text">Pokémon Type: PSYCHIC</p>
-                    <p class="card-text">Attack: 100</p>
-                    <p class="card-text">Defense: 100</p>
-                    <p class="card-text">Speed: 100</p>
+                    <p class="card-text">Pokémon Type: ???</p>
+                    <p class="card-text">Attack: ???</p>
+                    <p class="card-text">Defense: ???</p>
+                    <p class="card-text">Speed: ???</p>
                 </div>
             </div>
-            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="FIRE">
-                <div class="card-header">SQUIRTLE (#7) <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="squirtle">
+            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="NONE">
+                    <div class="card-header">??? (#???) <img class="unknown" src="./assets/images/question.png" height="30px" alt="">
                 </div>
                 <div class="card-body text-secondary">
-                    <p class="card-text">Pokémon Type: WATER</p>
-                    <p class="card-text">Attack: 48</p>
-                    <p class="card-text">Defense: 65</p>
-                    <p class="card-text">Speed: 43</p>
+                    <p class="card-text">Pokémon Type: ???</p>
+                    <p class="card-text">Attack: ???</p>
+                    <p class="card-text">Defense: ???</p>
+                    <p class="card-text">Speed: ???</p>
                 </div>
             </div>
-            <div class="card border-secondary mb-3 gym-card party-card shadow"  data-type="FIRE">
-                <div class="card-header">EEVEE (#133) <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" alt="eevee">
+            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="NONE">
+                    <div class="card-header">??? (#???) <img class="unknown" src="./assets/images/question.png" height="30px" alt="">
                 </div>
                 <div class="card-body text-secondary">
-                    <p class="card-text">Pokémon Type: NORMAL</p>
-                    <p class="card-text">Attack: 55</p>
-                    <p class="card-text">Defense: 50</p>
-                    <p class="card-text">Speed: 55</p>
+                    <p class="card-text">Pokémon Type: ???</p>
+                    <p class="card-text">Attack: ???</p>
+                    <p class="card-text">Defense: ???</p>
+                    <p class="card-text">Speed: ???</p>
                 </div>
             </div>
-            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="FIRE">
-                <div class="card-header">PONYTA (#77) <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png" alt="ponyta">
+            <div class="card border-secondary mb-3 gym-card party-card shadow" data-type="NONE">
+                    <div class="card-header">??? (#???) <img class="unknown" src="./assets/images/question.png" height="30px" alt="">
                 </div>
                 <div class="card-body text-secondary">
-                    <p class="card-text">Pokémon Type: FIRE</p>
-                    <p class="card-text">Attack: 85</p>
-                    <p class="card-text">Defense: 55</p>
-                    <p class="card-text">Speed: 90</p>
+                    <p class="card-text">Pokémon Type: ???</p>
+                    <p class="card-text">Attack: ???</p>
+                    <p class="card-text">Defense: ???</p>
+                    <p class="card-text">Speed: ???</p>
                 </div>
             </div>
         </div>
         <div class="row">
-                <div class="col-sm-12 text-center mt-3">
-                    <h5 id="overall-results-display">Your battle party is: <span class="great">SUPER EFFECTIVE</span></h5>
+                <div class="col-sm-12 text-center mt-2">
+                    <!--<h5 id="overall-results-display">Your battle party is: <span class="great">SUPER EFFECTIVE</span></h5> -->
+                    <h5 id="overall-results-display">choose a gym leader from the dropdown and click on the battle button to see how your party stack up against the competition!</h5>
                 </div>
             </div>
     </div>
@@ -224,6 +227,5 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js"></script>
     <script src="./assets/javascript/firebase-sv.js"></script>
     <script src="./assets/javascript/home.js"></script>
-    <!-- <script src="./assets/javascript/gym.js"></script> -->
 </body>
 </html>

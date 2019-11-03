@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    //create table based on passed array of pokemon
     function buildPokedexTable(array){
         array.sort(function(a,b) { return parseInt(a.number) - parseInt(b.number) } );
         console.log(array);
@@ -29,6 +30,7 @@ $(document).ready(function() {
         }
     }
     
+    //grab pokemon from friebase so we can create table
     pokedexRef.once("value", function(data) {
         let obj = data.val()
         let pokedexList = new Object();
