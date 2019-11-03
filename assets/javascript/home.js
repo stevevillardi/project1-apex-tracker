@@ -438,12 +438,15 @@ $(document).ready(function() {
                     case "WATER":
                         if(playerTypes[i] === "FIRE" || playerTypes[i] === "WATER" || playerTypes[i] === "ICE" || playerTypes[i] === "STEEL"){
                             playerScore.push(1)
+                            overallScore += 1
                         }
                         else if (playerTypes[i] === "ELECTRIC" || playerTypes[i] === "GRASS") {
                             playerScore.push(3)
+                            overallScore += 3
                         }
                         else {
                             playerScore.push(2)
+                            overallScore += 2
                         }
                         break;
                     default:
