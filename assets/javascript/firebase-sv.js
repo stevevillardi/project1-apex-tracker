@@ -14,6 +14,8 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 let database = firebase.database();
 
+let pokemonList;
+
 // All of our connections will be stored in this directory.
 let ref = database.ref();
 
@@ -29,8 +31,34 @@ partyRef.on("value", function(snapshot) {
     console.log("The read failed: " + errorObject.code);
 });
 
-let pokemonList;
-  function LoadPokedex() {
+//Initial function to seed data into firebase, only left in incase we need to reload database data. otherwise should not be ran again.
+function LoadGymLeaders() {
+    let name = "SLAKING"
+    let leader = "norman"
+    let number = 289
+    let type = "NORMAL"
+    let sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/289.png"
+    let attack = 160
+    let defense = 100
+    let speed = 100
+
+    gymRef.push({
+        leader: leader,
+        name: name,
+        number: number,
+        type: type,
+        sprite: sprite,
+        attack: attack,
+        defense: defense,
+        speed: speed
+    });
+}
+
+//Dont run this function, only used to bulk load gym member data into firebase
+//LoadGymLeaders();
+
+//Initial function to seed data into firebase, only left in incase we need to reload database data. otherwise should not be ran again.
+function LoadPokedex() {
     var pokeURL = "https://pokeapi.co/api/v2/pokedex/4/";
 
     $.ajax({

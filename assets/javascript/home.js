@@ -5,7 +5,9 @@ $(document).ready(function() {
     let textBuild;
     let battleType = [];
     let battleGym;
+    let gymType;
 
+    //check is gym page is active so we can change the h5 text for our header page
     if(page === "gym.html"){
         textBuild =`YOUR SELECTED YOUR BATTLE PARTY`
     }
@@ -13,6 +15,7 @@ $(document).ready(function() {
         textBuild = `BUILD YOUR BATTLE PARTY`
     }
 
+    //performs api search to return a pokemon to the party search jumbotron
     function apiSearch(pokemonName) {
         pokemonName = pokemonName.trim().toLowerCase()
         var pokeURL = `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`;
@@ -50,16 +53,19 @@ $(document).ready(function() {
         });
     };
 
+    //displays alert panel for search errors
     function displaySearchError(){
         $("#search-error").show();
         setTimeout(function(){$("#search-error").hide()},5000);
     }
 
+    //trigger alert panel for adding party member errors
     function displayAddPartyMemberError(text){
         $("#add-error").html(text).show();
         setTimeout(function(){$("#add-error").hide()},5000);
     }
 
+    //displays search results to jumbotron after being passed a pokemon
     function displaySearch(pokemon){
         $("#search-container").empty();
         let title = `<h1 class="display-4" id="pokemon-name" data-name="${pokemon.name}" data-number="${pokemon.number}" data-type="${pokemon.type}" data-sprite="${pokemon.sprite}" data-attack="${pokemon.baseATK}" data-speed="${pokemon.baseSPD}" data-defense="${pokemon.baseDEF}">${pokemon.name}  (#${pokemon.number}) <img src="${pokemon.sprite}" alt="${pokemon.name}"></h1>`
@@ -79,6 +85,7 @@ $(document).ready(function() {
         $("#search-container").append(title,description,cardBorder);
     }
 
+    //removes a party member based on slot number, triggers when remove button is clicked
     function resetPartyMember(slot,slotNumber){
         $(slot).empty();
         let cardHeader = `<div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>`
@@ -99,6 +106,7 @@ $(document).ready(function() {
         });
     }
 
+    //adds a party member based on slot number, triggers when add button is clicked
     function addPartyMember(slot,slotNumber,pokemon){
         if(email){
             let name = $(pokemon).data("name");
@@ -141,6 +149,7 @@ $(document).ready(function() {
         }
     }
 
+    //loads an individual member based on slot number
     function LoadPartyMember(slot,slotNumber,pokemon){
             let name = pokemon.name;
             let number = pokemon.number;
@@ -168,6 +177,65 @@ $(document).ready(function() {
             $(slot).append(cardHeader,cardBody)
     }
 
+    function LoadGymPartyMember(div,pokemon){
+        let card = $("<div>").addClass("card border-secondary mb-3 gym-card party-card shadow").attr("data-type",pokemon.type)
+        let cardHeader = `<div class="card-header">${pokemon.name} (#${pokemon.number}) <img src="${pokemon.sprite}" alt="${pokemon.name}"></div>`
+        let cardBody = $("<div>").addClass("card-body text-secondary")
+
+        let cardText = `<p class="card-text">Pokémon Type: ${pokemon.type}</p>`
+        $(cardBody).append(cardText)
+        cardText = `<p class="card-text">Attack: ${pokemon.attack}</p>`
+        $(cardBody).append(cardText)
+        cardText = `<p class="card-text">Defense: ${pokemon.defense}</p>`
+        $(cardBody).append(cardText)
+        cardText = `<p class="card-text">Speed: ${pokemon.speed}</p>`
+        $(cardBody).append(cardText)
+
+        $(card).append(cardHeader,cardBody)
+        div.append(card)
+
+    }
+
+    function loadGymParty(leader){
+        gymRef.once("value", function(data) {
+            let obj = data.val()
+            let party = new Object();
+            let partyArray = new Array();
+            Object.values(obj).forEach(value=>{
+                if(value.leader === leader){
+                    party = {
+                        leader: value.leader,
+                        name: value.name,
+                        number: value.number,
+                        type: value.type,
+                        attack: value.attack,
+                        defense: value.defense,
+                        speed: value.speed,
+                        sprite: value.sprite
+                    }
+                    partyArray.push(party);
+                }
+            });
+
+            //swap battle image
+            $("#battle-img").attr("src",`./assets/images/${leader}.png`)
+            $("#gymleader-display").text(`${leader}'s`)
+
+            let gymPartyDiv = $("#gym-party")
+            gymPartyDiv.empty();
+
+            if(partyArray.length > 0) {
+                for (let i = 0; i < partyArray.length ; i++){
+                    LoadGymPartyMember(gymPartyDiv,partyArray[i])
+                }
+            }                        
+            else{
+                console.log("nothing to load in firebase")
+            }
+        });
+    }
+
+    //loads a given party based on email from firebase
     function loadParty(email){
         partyRef.once("value", function(data) {
             let obj = data.val()
@@ -196,7 +264,6 @@ $(document).ready(function() {
                 //Grabs pokemon type for array for battle function
                 for(i=0;i<=5;i++){
                     battleType.push($(`#member-${i}`).data("type"))
-                    console.log(battleType)
                 }
             }                        
             else{
@@ -205,6 +272,7 @@ $(document).ready(function() {
         });
     }
 
+    //checks if users has localstorage if so we load thier party from firebase otherwise leave blank and set some varibles used for gym battle
     function checkForSession(){
         let session = localStorage.getItem("email");
         if (session){
@@ -215,16 +283,21 @@ $(document).ready(function() {
         }
         else{
             battleType.push("NONE","NONE","NONE","NONE","NONE","NONE");
-            console.log(battleType)
         }
     }
 
+    function battleGym(playerTypes,gymType){
+        //logic to figure out battle stats
+    }
+
+    //Perform poke search
     $("#submit").on("click", function(e){
         e.preventDefault();
         let searchTerm = $("#input-box").val();
         apiSearch(searchTerm);
     });
 
+    //set the email for the logged in user so we can track their party members
     $("#set-email").on("click", function(e){
         e.preventDefault();
         if(!$("#email-box").val()){
@@ -243,6 +316,7 @@ $(document).ready(function() {
         }
     });
 
+    //Load popup modal when user clicks login
     $("#login").on("click", function(e){
         if($("#login").text() === "Login"){
             $("#loginModal").modal('toggle');
@@ -260,11 +334,33 @@ $(document).ready(function() {
         }
     });
 
+    //When a dropdown choice is made on the gym page stage the gym leader so we can use it to load the cards for the gym loadout
     $(document).on("click",".gym-selector", function(){
-        console.log(`Selected Gym: ${$(this).data("leader")}`)
         battleGym = $(this).data("leader");
+        $("#gym-dropdown").text($(this).text())
+        loadGymParty(battleGym);
     });
 
+    //When a dropdown choice is made on the gym page stage the gym leader so we can use it to load the cards for the gym loadout
+    $(document).on("click","#battle", function(){
+        if(battleGym){
+            //grab gym leader pokemon type so we can pass it to the battle function
+            gymType = $(".gym-card").data("type");
+            
+            //console log both sets of data so we can see what we have to work with
+            console.log(`Our types: ${battleType}`)
+            console.log(`Gym type: ${gymType}`)
+            
+            //run battleSim function liam is working on
+            battleGym(battleType,gymType);
+        }
+        else{
+            //display error message to choose gym leader first
+            displayAddPartyMemberError("<strong>ERROR!</strong> You must pick a gym leader from the dropdown before you can begin a battle.")
+        }
+    });
+
+    //When an add to party button is clicked add the searched pokemon to the party
     $(document).on("click",".add-to-party", function(){
         let selectedPokemon = $("#pokemon-name")
         if($(selectedPokemon).data("name")){
@@ -277,12 +373,13 @@ $(document).ready(function() {
         }
     });
 
+    //When the remove button is clicked for a slot remove a pokemon from the party
     $(document).on("click",".remove-from-party", function(){
         let slotNumber = $(this).data("slot");
         let slotCard = $(this).parents().eq(2)
         resetPartyMember(slotCard,slotNumber);
     });
 
-    //Check to see if we need to log in or not
+    //Check to see if we need to log in or not so we can load their previous party
     checkForSession();
 })
