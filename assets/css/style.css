@@ -14,10 +14,22 @@ body {
     padding: 110px 15px 0;
 }
 
+.poor {
+    font-weight: bold;
+    font-size: 2rem;
+    color: red;
+}
+
+.normal {
+    font-weight: bold;
+    font-size: 2rem;
+    color: lightgray;
+}
+
 .great {
     font-weight: bold;
     font-size: 2rem;
-    color: lightgreen;
+    color: #4bbf73;
 }
 
 .footer {

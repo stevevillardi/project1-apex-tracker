@@ -6,6 +6,7 @@ $(document).ready(function() {
     let battleType = [];
     let battleGym;
     let gymType;
+    let gymCount;
 
     //check is gym page is active so we can change the h5 text for our header page
     if(page === "gym.html"){
@@ -71,7 +72,7 @@ $(document).ready(function() {
         let title = `<h1 class="display-4" id="pokemon-name" data-name="${pokemon.name}" data-number="${pokemon.number}" data-type="${pokemon.type}" data-sprite="${pokemon.sprite}" data-attack="${pokemon.baseATK}" data-speed="${pokemon.baseSPD}" data-defense="${pokemon.baseDEF}">${pokemon.name}  (#${pokemon.number}) <img src="${pokemon.sprite}" alt="${pokemon.name}"></h1>`
         let description = `<p class="lead" id="pokemon-description">${pokemon.description}</p>`
         let cardBorder = $("<div>").addClass("card border-secondary mb-3")
-        let cardBody = $("<div>").addClass("card-body text-secondary")
+        let cardBody = $("<div>").addClass("card-body")
         let pokedexNumber = `<h5 class="card-title" id="pokemon-number">Pokédex Number: ${pokemon.number}</h5>`
         let pokedexType = `<h5 class="card-title" id="pokemon-type">Pokémon Type: ${pokemon.type}</h5>`
         let pokedexHP = `<h5 class="card-title" id="pokemon-hp">Base HP: ${pokemon.baseHP}</h5>`
@@ -89,7 +90,7 @@ $(document).ready(function() {
     function resetPartyMember(slot,slotNumber){
         $(slot).empty();
         let cardHeader = `<div class="card-header">Available Slot <img src="./assets/images/pokeball.png" alt="pokeball"></div>`
-        let cardBody = $("<div>").addClass("card-body text-secondary")
+        let cardBody = $("<div>").addClass("card-body")
         let cardText = `<p class="card-text">Search for a Pokémon using the search bar and click the plus sign to add them to your party.</p>`
         let cardTitle = `<h5 class="card-title text-center">Add to party <i class="far fa-plus-square add-to-party" data-slot="${slotNumber}"></i></h5>`
         $(cardBody).append(cardText,cardTitle)
@@ -131,7 +132,7 @@ $(document).ready(function() {
     
             $(slot).empty();
             let cardHeader = `<div class="card-header" id="member-${slotNumber -1}" data-type="${type.toUpperCase()}">${name.toUpperCase()} (#${number}) <img src="${sprite}" alt="${name}"></div>`
-            let cardBody = $("<div>").addClass("card-body text-secondary")
+            let cardBody = $("<div>").addClass("card-body")
             let cardText = `<p class="card-text">Pokémon Type: ${type.toUpperCase()}</p>`
             $(cardBody).append(cardText)
             cardText = `<p class="card-text">Attack: ${attack}</p>`
@@ -161,7 +162,7 @@ $(document).ready(function() {
     
             $(slot).empty();
             let cardHeader = `<div class="card-header" id="member-${slotNumber -1}" data-type="${type.toUpperCase()}">${name.toUpperCase()} (#${number}) <img src="${sprite}" alt="${name}"></div>`
-            let cardBody = $("<div>").addClass("card-body text-secondary")
+            let cardBody = $("<div>").addClass("card-body")
             let cardText = `<p class="card-text">Pokémon Type: ${type.toUpperCase()}</p>`
             $(cardBody).append(cardText)
             cardText = `<p class="card-text">Attack: ${attack}</p>`
@@ -180,7 +181,7 @@ $(document).ready(function() {
     function LoadGymPartyMember(div,pokemon){
         let card = $("<div>").addClass("card border-secondary mb-3 gym-card party-card shadow").attr("data-type",pokemon.type)
         let cardHeader = `<div class="card-header">${pokemon.name} (#${pokemon.number}) <img src="${pokemon.sprite}" alt="${pokemon.name}"></div>`
-        let cardBody = $("<div>").addClass("card-body text-secondary")
+        let cardBody = $("<div>").addClass("card-body")
 
         let cardText = `<p class="card-text">Pokémon Type: ${pokemon.type}</p>`
         $(cardBody).append(cardText)
@@ -223,6 +224,8 @@ $(document).ready(function() {
 
             let gymPartyDiv = $("#gym-party")
             gymPartyDiv.empty();
+
+            gymCount = partyArray.length
 
             if(partyArray.length > 0) {
                 for (let i = 0; i < partyArray.length ; i++){
@@ -286,8 +289,201 @@ $(document).ready(function() {
         }
     }
 
-    function battleGym(playerTypes,gymType){
+    function resetCards(){
+        for(i=0; i<6;i++){
+            $(`#member-${i}`).parent().removeClass("bg-dark bg-danger bg-info bg-success text-white")
+        }
+        $("#overall-results-display").text(`Choose a gym leader from the dropdown and click on the battle button to see how your party stack up against the competition!`)
+    }
+
+    function updateCards(scores){
+        for(i=0; i<scores.length;i++){
+            switch(scores[i]){
+                case 0:
+                    $(`#member-${i}`).parent().removeClass("bg-dark bg-danger bg-info bg-success text-white")
+                    $(`#member-${i}`).parent().addClass("bg-dark text-white")
+                    break;
+                case 1:
+                    $(`#member-${i}`).parent().removeClass("bg-dark bg-danger bg-info bg-success text-white")
+                    $(`#member-${i}`).parent().addClass("bg-danger text-white")
+                    break;
+                case 2:
+                    $(`#member-${i}`).parent().removeClass("bg-dark bg-danger bg-info bg-success text-white")
+                    $(`#member-${i}`).parent().addClass("bg-info  text-white")
+                    break;
+                case 3:
+                    $(`#member-${i}`).parent().removeClass("bg-dark bg-danger bg-info bg-success text-white")
+                    $(`#member-${i}`).parent().addClass("bg-success text-white")
+                    break;
+            }
+        }
+    }
+
+    function gymBattle(playerTypes,gymType,gymCount){
         //logic to figure out battle stats
+        // 0 = no effect
+        // 1 = 1/2
+        // 2 = normal
+        // 3 = double
+        let playerScore =[];
+        let overallScore = 0;
+
+        let playerCount =0;
+        for(i=0;i< playerTypes.length;i++){
+            //get number of pokemon the player has selected and start logic for determining score
+            if(playerTypes[i] != "NONE"){
+                playerCount++
+
+                switch(gymType) {
+                    case "ROCK":
+                        if(playerTypes[i] === "NORMAL" || playerTypes[i] === "FIRE" || playerTypes[i] === "POISON" || playerTypes[i] === "FLYING"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "WATER" || playerTypes[i] === "GRASS" || playerTypes[i] === "FIGHTING" || playerTypes[i] === "GROUND" || playerTypes[i] === "STEEL") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "FIGHTING":
+                        if(playerTypes[i] === "BUG" || playerTypes[i] === "ROCK" || playerTypes[i] === "DARK"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "FLYING" || playerTypes[i] === "PSYCHIC" || playerTypes[i] === "FAIRY") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "ELECTRIC":
+                        if(playerTypes[i] === "ELECTRIC" || playerTypes[i] === "FLYING" || playerTypes[i] === "STEEL"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "GROUND") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "FIRE":
+                        if(playerTypes[i] === "FIRE" || playerTypes[i] === "GRASS" || playerTypes[i] === "ICE" || playerTypes[i] === "BUG" || playerTypes[i] === "FAIRY" || playerTypes[i] === "STEEL"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "WATER" || playerTypes[i] === "GROUND" || playerTypes[i] === "ROCK") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "NORMAL":
+                        if(playerTypes[i] === "GHOST"){
+                            playerScore.push(0)
+                        }
+                        else if (playerTypes[i] === "FIGHTING") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "FLYING":
+                        if(playerTypes[i] === "GRASS" || playerTypes[i] === "FIGHTING" || playerTypes[i] === "BUG"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "ELECTRIC" || playerTypes[i] === "ICE" || playerTypes[i] === "ROCK") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else if (playerTypes[i] === "GROUND"){
+                            playerScore.push(0)
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "PSYCHIC":
+                        if(playerTypes[i] === "FIGHTING" || playerTypes[i] === "PSYCHIC"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "BUG" || playerTypes[i] === "GHOST" || playerTypes[i] === "DARK") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "WATER":
+                        if(playerTypes[i] === "FIRE" || playerTypes[i] === "WATER" || playerTypes[i] === "ICE" || playerTypes[i] === "STEEL"){
+                            playerScore.push(1)
+                        }
+                        else if (playerTypes[i] === "ELECTRIC" || playerTypes[i] === "GRASS") {
+                            playerScore.push(3)
+                        }
+                        else {
+                            playerScore.push(2)
+                        }
+                        break;
+                    default:
+                        playerScore.push(0)
+                }
+            }
+            else{
+                playerScore.push(0)
+            }
+        }
+        //build out comp tiers based on player pokemon count
+        let zeroTier = 0;
+        let oneTier = playerCount * 1
+        let twoTier= playerCount * 2
+        let threeTier= playerCount * 3
+
+        console.log(playerScore)
+        console.log(playerCount)
+        console.log(overallScore)
+
+        console.log(`0 tier = ${zeroTier}`)
+        console.log(`1 tier = ${oneTier}`)
+        console.log(`2 tier = ${twoTier}`)
+        console.log(`3 tier = ${threeTier}`)
+
+        if(overallScore >= zeroTier && overallScore <= oneTier) {
+            console.log("YOU PARTY IS NOT VERY EFFECTIVE!")
+            $("#overall-results-display").html(`Your battle party is: <span class="poor">NOT VERY EFFECTIVE</span>`)
+        }
+        else if (overallScore > oneTier && overallScore <= twoTier){
+            console.log("YOU PARTY HAS NEUTRAL EFFECTIVENESS")
+            $("#overall-results-display").html(`Your battle party has: <span class="normal">NORMAL EFFECTIVENESS</span>`)
+
+        }
+        else if (overallScore > twoTier && overallScore <= threeTier){
+            console.log("YOU PARTY IS SUPER EFFECTIVE!")
+            $("#overall-results-display").html(`Your battle party is: <span class="great">SUPER EFFECTIVE</span>`)
+        }
+
+        updateCards(playerScore);
     }
 
     //Perform poke search
@@ -338,6 +534,7 @@ $(document).ready(function() {
     $(document).on("click",".gym-selector", function(){
         battleGym = $(this).data("leader");
         $("#gym-dropdown").text($(this).text())
+        resetCards();
         loadGymParty(battleGym);
     });
 
@@ -352,7 +549,7 @@ $(document).ready(function() {
             console.log(`Gym type: ${gymType}`)
             
             //run battleSim function liam is working on
-            battleGym(battleType,gymType);
+            gymBattle(battleType,gymType,gymCount);
         }
         else{
             //display error message to choose gym leader first
