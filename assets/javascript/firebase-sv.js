@@ -33,14 +33,14 @@ partyRef.on("value", function(snapshot) {
 
 //Initial function to seed data into firebase, only left in incase we need to reload database data. otherwise should not be ran again.
 function LoadGymLeaders() {
-    let name = "SLAKING"
-    let leader = "norman"
-    let number = 289
-    let type = "NORMAL"
-    let sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/289.png"
-    let attack = 160
-    let defense = 100
-    let speed = 100
+    let name = "MILOTIC"
+    let leader = "wallace"
+    let number = 350
+    let type = "WATER"
+    let sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/350.png"
+    let attack = 60
+    let defense = 79
+    let speed = 81
 
     gymRef.push({
         leader: leader,
