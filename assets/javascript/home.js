@@ -327,6 +327,8 @@ $(document).ready(function() {
         // 3 = double
         let playerScore =[];
         let overallScore = 0;
+        let swapOut = [];
+        let swapIn = [];
 
         let playerCount =0;
         for(i=0;i< playerTypes.length;i++){
@@ -339,6 +341,18 @@ $(document).ready(function() {
                         if(playerTypes[i] === "NORMAL" || playerTypes[i] === "FIRE" || playerTypes[i] === "POISON" || playerTypes[i] === "FLYING"){
                             playerScore.push(1)
                             overallScore += 1
+                            if (swapOut.indexOf(playerTypes[i])===-1){
+                                swapOut.push(playerTypes[i]);
+                                let swapList = [" WATER", " GRASS", " FIGHTING", " GROUND", " STEEL"]; 
+                                for (let i = 0; i < swapList.length; i++){
+                                    if (swapIn.indexOf(swapList[i]) === -1){
+                                        swapIn.push(swapList[i]);
+                                };
+                                };
+                            
+                            };
+                            // console.log(swapOut);
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "WATER" || playerTypes[i] === "GRASS" || playerTypes[i] === "FIGHTING" || playerTypes[i] === "GROUND" || playerTypes[i] === "STEEL") {
                             playerScore.push(3)
@@ -347,12 +361,17 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" WATER", " GRASS", " FIGHTING", " GROUND", " STEEL");
                         }
                         break;
                     case "FIGHTING":
                         if(playerTypes[i] === "BUG" || playerTypes[i] === "ROCK" || playerTypes[i] === "DARK"){
                             playerScore.push(1)
                             overallScore += 1
+                            swapOut.push(playerTypes[i]);
+                            // console.log(swapOut);
+                            swapIn.push(" FLYING", " PSYCHIC", " FAIRY");
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "FLYING" || playerTypes[i] === "PSYCHIC" || playerTypes[i] === "FAIRY") {
                             playerScore.push(3)
@@ -361,12 +380,17 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" FLYING", " PSYCHIC", " FAIRY");
                         }
                         break;
                     case "ELECTRIC":
                         if(playerTypes[i] === "ELECTRIC" || playerTypes[i] === "FLYING" || playerTypes[i] === "STEEL"){
                             playerScore.push(1)
                             overallScore += 1
+                            swapOut.push(playerTypes[i]);
+                            // console.log(swapOut);
+                            swapIn.push(" GROUND");
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "GROUND") {
                             playerScore.push(3)
@@ -375,12 +399,17 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" GROUND");
                         }
                         break;
                     case "FIRE":
                         if(playerTypes[i] === "FIRE" || playerTypes[i] === "GRASS" || playerTypes[i] === "ICE" || playerTypes[i] === "BUG" || playerTypes[i] === "FAIRY" || playerTypes[i] === "STEEL"){
                             playerScore.push(1)
                             overallScore += 1
+                            swapOut.push(playerTypes[i]);
+                            // console.log(swapOut);
+                            swapIn.push(" WATER", " GROUND", " ROCK");
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "WATER" || playerTypes[i] === "GROUND" || playerTypes[i] === "ROCK") {
                             playerScore.push(3)
@@ -389,11 +418,16 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" WATER", " GROUND", " ROCK");
                         }
                         break;
                     case "NORMAL":
                         if(playerTypes[i] === "GHOST"){
                             playerScore.push(0)
+                            swapOut.push(playerTypes[i]);
+                            // console.log(swapOut);
+                            swapIn.push(" FIGHTING");
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "FIGHTING") {
                             playerScore.push(3)
@@ -402,12 +436,17 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" FIGHTING");
                         }
                         break;
                     case "FLYING":
                         if(playerTypes[i] === "GRASS" || playerTypes[i] === "FIGHTING" || playerTypes[i] === "BUG"){
                             playerScore.push(1)
                             overallScore += 1
+                            swapOut.push(playerTypes[i], "GROUND");
+                            // console.log(swapOut);
+                            swapIn.push(" ELECTRIC", " ICE", " ROCK");
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "ELECTRIC" || playerTypes[i] === "ICE" || playerTypes[i] === "ROCK") {
                             playerScore.push(3)
@@ -419,12 +458,17 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" ELECTRIC", " ICE", " ROCK");
                         }
                         break;
                     case "PSYCHIC":
                         if(playerTypes[i] === "FIGHTING" || playerTypes[i] === "PSYCHIC"){
                             playerScore.push(1)
                             overallScore += 1
+                            swapOut.push(playerTypes[i]);
+                            // console.log(swapOut);
+                            swapIn.push(" BUG", " GHOST", " DARK");
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "BUG" || playerTypes[i] === "GHOST" || playerTypes[i] === "DARK") {
                             playerScore.push(3)
@@ -433,12 +477,17 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" BUG", " GHOST", " DARK");
                         }
                         break;
                     case "WATER":
                         if(playerTypes[i] === "FIRE" || playerTypes[i] === "WATER" || playerTypes[i] === "ICE" || playerTypes[i] === "STEEL"){
                             playerScore.push(1)
                             overallScore += 1
+                            swapOut.push(playerTypes[i]);
+                            // console.log(swapOut);
+                            swapIn.push(" ELECTRIC", " GRASS");
+                            // console.log(swapIn);
                         }
                         else if (playerTypes[i] === "ELECTRIC" || playerTypes[i] === "GRASS") {
                             playerScore.push(3)
@@ -447,6 +496,7 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
+                            swapIn.push(" ELECTRIC", " GRASS");
                         }
                         break;
                     default:
@@ -472,18 +522,57 @@ $(document).ready(function() {
         console.log(`2 tier = ${twoTier}`)
         console.log(`3 tier = ${threeTier}`)
 
+        typedTimer = "^3000";
+
         if(overallScore >= zeroTier && overallScore <= oneTier) {
             console.log("YOU PARTY IS NOT VERY EFFECTIVE!")
-            $("#overall-results-display").html(`Your battle party is: <span class="poor">NOT VERY EFFECTIVE</span>`)
+            // original html display from steve below
+            // $("#overall-results-display").html(`Your battle party is: <span class="poor">NOT VERY EFFECTIVE</span>`)
+            $("#typed").empty();
+            $("#battle").attr("disabled", true);
+            var typed = new Typed('#typed', {
+                strings: [`Your battle party is: <span class='poor'>NOT VERY EFFECTIVE</span> ${typedTimer}`, `Consider swapping out the following types in your party: ${swapOut} ${typedTimer}`, `You should look into using the following types for this gym: ${swapIn} ${typedTimer}`, `Your battle party is: <span class='poor'>NOT VERY EFFECTIVE</span>`],
+                backSpeed: 40,
+                typeSpeed: 45,
+                onComplete: function () {
+                    $(".typed-cursor").hide();
+                    $("#battle").attr("disabled", false);
+                }
+                
+            });
+        
         }
         else if (overallScore > oneTier && overallScore <= twoTier){
             console.log("YOU PARTY HAS NEUTRAL EFFECTIVENESS")
-            $("#overall-results-display").html(`Your battle party has: <span class="normal">NORMAL EFFECTIVENESS</span>`)
-
+            // $("#overall-results-display").html(`Your battle party has: <span class="normal">NORMAL EFFECTIVENESS</span>`)
+            $("#typed").empty();
+            $("#battle").attr("disabled", true);
+            var typed = new Typed('#typed', {
+                strings: [`Your battle party has: <span class='normal'>NORMAL EFFECTIVENESS</span> ${typedTimer}`, `To improve effectiveness consider adding some of the following types to your party: ${swapIn} ${typedTimer}`, `Your battle party has: <span class='normal'>NORMAL EFFECTIVENESS</span>`],
+                backSpeed: 40,
+                typeSpeed: 45,
+                onComplete: function () {
+                    $(".typed-cursor").hide();
+                    $("#battle").attr("disabled", false);
+                }
+                
+            });
         }
         else if (overallScore > twoTier && overallScore <= threeTier){
             console.log("YOU PARTY IS SUPER EFFECTIVE!")
-            $("#overall-results-display").html(`Your battle party is: <span class="great">SUPER EFFECTIVE</span>`)
+            // $("#overall-results-display").html(`Your battle party is: <span class="great">SUPER EFFECTIVE</span>`)
+            $("#typed").empty();
+            $("#battle").attr("disabled", true);
+            var typed = new Typed('#typed', {
+                strings: [`Your battle party is: <span class='great'>SUPER EFFECTIVE</span> ${typedTimer}`, `Great job! You're on your way to being the very best! ${typedTimer}`, `Your battle party is: <span class='great'>SUPER EFFECTIVE</span>`],
+                backSpeed: 40,
+                typeSpeed: 45,
+                onComplete: function () {
+                    $(".typed-cursor").hide();
+                    $("#battle").attr("disabled", false);
+                }
+                
+            });
         }
 
         updateCards(playerScore);

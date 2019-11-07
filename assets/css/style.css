@@ -166,7 +166,16 @@ tbody{
     border: 1px solid #bfa8a8;
 }
 
-#user-display, #gymleader-display , #overall-results-display{
+#user-display, #gymleader-display , #overall-results-display, #typed {
+    color: white;
+}
+
+#typed {
+    display: inline;
+}
+
+.typed-cursor {
+    font-size: 40px;
     color: white;
 }
 
