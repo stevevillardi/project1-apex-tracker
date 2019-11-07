@@ -1,3 +1,16 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyAgzfYd7yw-r1B3n_welUCw2AehtsZjexY",
+  authDomain: "pokepedia-96f0c.firebaseapp.com",
+  databaseURL: "https://pokepedia-96f0c.firebaseio.com",
+  projectId: "pokepedia-96f0c",
+  storageBucket: "pokepedia-96f0c.appspot.com",
+  messagingSenderId: "825702347273",
+  appId: "1:825702347273:web:47f015c65582ad8207bed8",
+  measurementId: "G-RP5BKDLSX9"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 //Objects of all the gym leaders
 const gymLeaders = [
     Roxanne = {
