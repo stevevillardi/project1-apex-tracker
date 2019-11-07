@@ -15,7 +15,7 @@ $(document).ready(function() {
             let tableXAttack = array[i].xattack;
             let tableXDefense = array[i].xdefense;
 
-            let newRow = $("<tr>").addClass("table-secondary").append(
+            let newRow = $("<tr>").addClass("table-secondary").attr('id', tableName).append(
                 $("<td>").text(tableNum),
                 $("<td>").text(tableName),
                 $(`<td class="img-column">`).html(tableSprite),
@@ -29,7 +29,23 @@ $(document).ready(function() {
             table.append($(newRow))
         }
     }
-    
+    function updateModal(pokemon, youtube){
+        $(".modal-body").empty()
+        let video = youtube.items[0].id.videoId
+        console.log(video)
+        let youtubeIframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        $("#youtubeModalLabel").text(`Youtube Search Results: ${pokemon}`)
+        $(".modal-body").append(youtubeIframe)
+    }
+    function ajaxYoutube(pokeName){
+        $.ajax({
+            url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q="+ pokeName +"%20pokemon%20emerald&key=AIzaSyBqYnT_xCPQVOuKCsNfu4o5OGbmEIU64_A",
+            method: "GET"
+        }).then(function (response) {
+            updateModal(pokeName, response)
+            console.log(response);
+        })
+    }
     //grab pokemon from friebase so we can create table
     pokedexRef.once("value", function(data) {
         let obj = data.val()
@@ -56,4 +72,13 @@ $(document).ready(function() {
             console.log("nothing to load in firebase")
         }
     });
+    $(document).on("click",".table-secondary", function(event){
+        let pokeName = $(this).attr("id")
+        console.log(pokeName);
+        ajaxYoutube(pokeName);
+        
+        $("#youtubeModal").modal("toggle");
+    })
+
+    /*<iframe width="560" height="315" src="https://www.youtube.com/embed/ydxAZ32hFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*/
 });
