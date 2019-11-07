@@ -337,6 +337,68 @@ $(document).ready(function() {
                 playerCount++
 
                 switch(gymType) {
+                    case "DARK":
+                        if(playerTypes[i] === "DARK" || playerTypes[i] === "GHOST"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if(playerTypes[i] === "PSYCHIC"){
+                            playerScore.push(0)
+                        }
+                        else if (playerTypes[i] === "FIGHTING" || playerTypes[i] === "BUG") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "GHOST":
+                        if(playerTypes[i] === "POISON" || playerTypes[i] === "BUG"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if(playerTypes[i] === "NORMAL" || playerTypes[i] === "FIGHTING"){
+                            playerScore.push(0)
+                        }
+                        else if (playerTypes[i] === "GHOST" || playerTypes[i] === "DARK") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "ICE":
+                        if(playerTypes[i] === "ICE"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "FIRE" || playerTypes[i] === "FIGHTING" || playerTypes[i] === "ROCK" || playerTypes[i] === "STEEL") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
+                    case "DRAGON":
+                        if(playerTypes[i] === "FIRE" || playerTypes[i] === "WATER" || playerTypes[i] === "ELECTRIC" || playerTypes[i] === "GRASS"){
+                            playerScore.push(1)
+                            overallScore += 1
+                        }
+                        else if (playerTypes[i] === "ICE" || playerTypes[i] === "DRAGON") {
+                            playerScore.push(3)
+                            overallScore += 3
+                        }
+                        else {
+                            playerScore.push(2)
+                            overallScore += 2
+                        }
+                        break;
                     case "ROCK":
                         if(playerTypes[i] === "NORMAL" || playerTypes[i] === "FIRE" || playerTypes[i] === "POISON" || playerTypes[i] === "FLYING"){
                             playerScore.push(1)

@@ -32,6 +32,11 @@ body {
     color: #4bbf73;
 }
 
+.dropdown-menu{
+    height: 500px;
+    overflow-y: auto;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
