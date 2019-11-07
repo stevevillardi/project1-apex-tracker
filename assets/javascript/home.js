@@ -616,10 +616,15 @@ $(document).ready(function() {
                         // EXTRA LOGIC NEEDED
                         if(playerTypes[i] === "GHOST"){
                             playerScore.push(0)
-                            swapOut.push(playerTypes[i]);
-                            // console.log(swapOut);
-                            swapIn.push(" FIGHTING");
-                            // console.log(swapIn);
+                            if (swapOut.indexOf(playerTypes[i])===-1){
+                                swapOut.push(playerTypes[i]);
+                                let swapList = [" FIGHTING"]; 
+                                for (let i = 0; i < swapList.length; i++){
+                                    if (swapIn.indexOf(swapList[i]) === -1){
+                                        swapIn.push(swapList[i]);
+                                };
+                                };
+                            };
                         }
                         else if (playerTypes[i] === "FIGHTING") {
                             playerScore.push(3)
@@ -628,7 +633,15 @@ $(document).ready(function() {
                         else {
                             playerScore.push(2)
                             overallScore += 2
-                            swapIn.push(" FIGHTING");
+                            if (swapOut.indexOf(playerTypes[i])===-1){
+                                swapOut.push(playerTypes[i]);
+                                let swapList = [" FIGHTING"]; 
+                                for (let i = 0; i < swapList.length; i++){
+                                    if (swapIn.indexOf(swapList[i]) === -1){
+                                        swapIn.push(swapList[i]);
+                                };
+                                };
+                            };
                         }
                         break;
                     case "FLYING":
