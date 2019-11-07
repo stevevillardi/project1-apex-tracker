@@ -7,6 +7,7 @@ $(document).ready(function() {
     let battleGym;
     let gymType;
     let gymCount;
+    let searchTerm;
 
     //check is gym page is active so we can change the h5 text for our header page
     if(page === "gym.html"){
@@ -81,7 +82,9 @@ $(document).ready(function() {
         let pokedexSPD = `<h5 class="card-title" id="pokemon-speed">Base Speed: ${pokemon.baseSPD}</h5>`
         let pokedexSPCATK = `<h5 class="card-title" id="pokemon-spc-attack">Base Special Attack: ${pokemon.baseSPCATK}</h5>`
         let pokedexSPCDEF = `<h5 class="card-title" id="pokemon-spc-defense">Base Special Defense: ${pokemon.baseSPCDEF}</h5>`
-        cardBody.append(pokedexNumber,pokedexType,pokedexHP,pokedexATK,pokedexDEF,pokedexSPD,pokedexSPCATK,pokedexSPCDEF);
+        
+        let pokeButton = `<button type="button" class="btn btn-outline-secondary" id="search-youtube" >Lookup on Youtube</button>`
+        cardBody.append(pokedexNumber,pokedexType,pokedexHP,pokedexATK,pokedexDEF,pokedexSPD,pokedexSPCATK,pokedexSPCDEF,pokeButton);
         cardBorder.append(cardBody);
         $("#search-container").append(title,description,cardBorder);
     }
@@ -176,6 +179,24 @@ $(document).ready(function() {
                 $(cardBody).append(cardTitle)
             }
             $(slot).append(cardHeader,cardBody)
+    }
+
+    function updateModal(pokemon, youtube){
+        $(".modal-body").empty()
+        let video = youtube.items[0].id.videoId
+        console.log(video)
+        let youtubeIframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        $("#youtubeModalLabel").text(`Youtube Search Results: ${pokemon}`)
+        $(".modal-body").append(youtubeIframe)
+    }
+    function ajaxYoutube(pokeName){
+        $.ajax({
+            url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q="+ pokeName +"%20pokemon%20emerald&key=AIzaSyBqYnT_xCPQVOuKCsNfu4o5OGbmEIU64_A",
+            method: "GET"
+        }).then(function (response) {
+            updateModal(pokeName, response)
+            console.log(response);
+        })
     }
 
     function LoadGymPartyMember(div,pokemon){
@@ -795,7 +816,7 @@ $(document).ready(function() {
     //Perform poke search
     $("#submit").on("click", function(e){
         e.preventDefault();
-        let searchTerm = $("#input-box").val();
+        searchTerm = $("#input-box").val();
         apiSearch(searchTerm);
     });
 
@@ -842,6 +863,11 @@ $(document).ready(function() {
         $("#gym-dropdown").text($(this).text())
         resetCards();
         loadGymParty(battleGym);
+    });
+
+    $(document).on("click","#search-youtube", function(){
+        ajaxYoutube(searchTerm);
+        $("#youtubeModal").modal("toggle");
     });
 
     //When a dropdown choice is made on the gym page stage the gym leader so we can use it to load the cards for the gym loadout
