@@ -183,6 +183,9 @@ tbody{
     font-size: 40px;
     color: white;
 }
+.swap {
+    color: black;
+}
 
 #login{
     margin-left: 15px;
