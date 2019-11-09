@@ -780,7 +780,7 @@ $(document).ready(function() {
                 onComplete: function () {
                     $(".typed-cursor").hide();
                     $("#battle").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
-                    $("#gym-dropdown").attr("disabled", false);
+                    $("#gym-dropdown").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
                 }
                 
             });
@@ -817,7 +817,7 @@ $(document).ready(function() {
                 onComplete: function () {
                     $(".typed-cursor").hide();
                     $("#battle").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
-                    $("#gym-dropdown").attr("disabled", false);
+                    $("#gym-dropdown").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
                 }
                 
             });
