@@ -83,7 +83,7 @@ $(document).ready(function() {
         let pokedexSPCATK = `<h5 class="card-title" id="pokemon-spc-attack">Base Special Attack: ${pokemon.baseSPCATK}</h5>`
         let pokedexSPCDEF = `<h5 class="card-title" id="pokemon-spc-defense">Base Special Defense: ${pokemon.baseSPCDEF}</h5>`
         
-        let pokeButton = `<button type="button" class="btn btn-outline-secondary" id="search-youtube" >Lookup on Youtube</button>`
+        let pokeButton = `<button type="button" class="btn btn-outline-success" id="search-youtube" >Lookup on Youtube</button>`
         cardBody.append(pokedexNumber,pokedexType,pokedexHP,pokedexATK,pokedexDEF,pokedexSPD,pokedexSPCATK,pokedexSPCDEF,pokeButton);
         cardBorder.append(cardBody);
         $("#search-container").append(title,description,cardBorder);
@@ -184,7 +184,7 @@ $(document).ready(function() {
     function updateModal(pokemon, youtube){
         $(".modal-body").empty()
         let video = youtube.items[0].id.videoId
-        console.log(video)
+        //console.log(video)
         let youtubeIframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
         $("#youtubeModalLabel").text(`Youtube Search Results: ${pokemon}`)
         $(".modal-body").append(youtubeIframe)
@@ -195,7 +195,7 @@ $(document).ready(function() {
             method: "GET"
         }).then(function (response) {
             updateModal(pokeName, response)
-            console.log(response);
+            //console.log(response);
         })
     }
 
@@ -254,7 +254,7 @@ $(document).ready(function() {
                 }
             }                        
             else{
-                console.log("nothing to load in firebase")
+                //console.log("nothing to load in firebase")
             }
         });
     }
@@ -291,7 +291,7 @@ $(document).ready(function() {
                 }
             }                        
             else{
-                console.log("nothing to load in firebase")
+                //console.log("nothing to load in firebase")
             }
         });
     }
@@ -751,35 +751,35 @@ $(document).ready(function() {
         }
         //build out comp tiers based on player pokemon count
         let zeroTier = 0;
-        let oneTier = playerCount * 1
-        let twoTier= playerCount * 2
+        let oneTier = (playerCount * 1) + Math.ceil(playerCount * .5)
+        let twoTier= (playerCount * 2)  + Math.ceil(playerCount * .25)
         let threeTier= playerCount * 3
 
-        console.log(playerScore)
-        console.log(playerCount)
-        console.log(overallScore)
+        //console.log(playerScore)
+        //console.log(playerCount)
+        //console.log(overallScore)
 
-        console.log(`0 tier = ${zeroTier}`)
-        console.log(`1 tier = ${oneTier}`)
-        console.log(`2 tier = ${twoTier}`)
-        console.log(`3 tier = ${threeTier}`)
+        //console.log(`0 tier = ${zeroTier}`)
+        //console.log(`1 tier = ${oneTier}`)
+        //console.log(`2 tier = ${twoTier}`)
+        //console.log(`3 tier = ${threeTier}`)
 
         typedTimer = "^2000";
 
         if(overallScore >= zeroTier && overallScore <= oneTier) {
-            console.log("YOU PARTY IS NOT VERY EFFECTIVE!")
+            //console.log("YOU PARTY IS NOT VERY EFFECTIVE!")
             // original html display from steve below
             // $("#overall-results-display").html(`Your battle party is: <span class="poor">NOT VERY EFFECTIVE</span>`)
             $("#typed").empty();
-            $("#battle").attr("disabled", true);
-            $("#gym-dropdown").attr("disabled", true);
+            $("#battle").attr("disabled", true).removeClass("btn-outline-success").addClass("btn-outline-secondary");
+            $("#gym-dropdown").attr("disabled", true).removeClass("btn-outline-success").addClass("btn-outline-secondary");
             var typed = new Typed('#typed', {
                 strings: [`Your battle party is: <span class='poor'>NOT VERY EFFECTIVE</span> ${typedTimer}`, `Consider swapping out the following types in your party: ${swapOut} ${typedTimer}`, `You should look into using the following types for this gym: ${swapIn} ${typedTimer}`, `Your battle party is: <span class='poor'>NOT VERY EFFECTIVE</span>`],
                 backSpeed: 40,
                 typeSpeed: 45,
                 onComplete: function () {
                     $(".typed-cursor").hide();
-                    $("#battle").attr("disabled", false);
+                    $("#battle").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
                     $("#gym-dropdown").attr("disabled", false);
                 }
                 
@@ -787,36 +787,36 @@ $(document).ready(function() {
         
         }
         else if (overallScore > oneTier && overallScore <= twoTier){
-            console.log("YOU PARTY HAS NEUTRAL EFFECTIVENESS")
+            //console.log("YOU PARTY HAS NEUTRAL EFFECTIVENESS")
             // $("#overall-results-display").html(`Your battle party has: <span class="normal">NORMAL EFFECTIVENESS</span>`)
             $("#typed").empty();
-            $("#battle").attr("disabled", true);
-            $("#gym-dropdown").attr("disabled", true);
+            $("#battle").attr("disabled", true).removeClass("btn-outline-success").addClass("btn-outline-secondary");
+            $("#gym-dropdown").attr("disabled", true).removeClass("btn-outline-success").addClass("btn-outline-secondary");
             var typed = new Typed('#typed', {
                 strings: [`Your battle party has: <span class='normal'>NORMAL EFFECTIVENESS</span> ${typedTimer}`, `To improve effectiveness consider adding some of the following types to your party: ${swapIn} ${typedTimer}`, `Your battle party has: <span class='normal'>NORMAL EFFECTIVENESS</span>`],
                 backSpeed: 40,
                 typeSpeed: 45,
                 onComplete: function () {
                     $(".typed-cursor").hide();
-                    $("#battle").attr("disabled", false);
-                    $("#gym-dropdown").attr("disabled", false);
+                    $("#battle").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
+                    $("#gym-dropdown").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
                 }
                 
             });
         }
         else if (overallScore > twoTier && overallScore <= threeTier){
-            console.log("YOU PARTY IS SUPER EFFECTIVE!")
+            //console.log("YOU PARTY IS SUPER EFFECTIVE!")
             // $("#overall-results-display").html(`Your battle party is: <span class="great">SUPER EFFECTIVE</span>`)
             $("#typed").empty();
-            $("#battle").attr("disabled", true);
-            $("#gym-dropdown").attr("disabled", true);
+            $("#battle").attr("disabled", true).removeClass("btn-outline-success").addClass("btn-outline-secondary");
+            $("#gym-dropdown").attr("disabled", true).removeClass("btn-outline-success").addClass("btn-outline-secondary");
             var typed = new Typed('#typed', {
                 strings: [`Your battle party is: <span class='great'>SUPER EFFECTIVE</span> ${typedTimer}`, `Great job! You're on your way to being the very best! ${typedTimer}`, `Your battle party is: <span class='great'>SUPER EFFECTIVE</span>`],
                 backSpeed: 40,
                 typeSpeed: 45,
                 onComplete: function () {
                     $(".typed-cursor").hide();
-                    $("#battle").attr("disabled", false);
+                    $("#battle").attr("disabled", false).addClass("btn-outline-success").removeClass("btn-outline-secondary");
                     $("#gym-dropdown").attr("disabled", false);
                 }
                 
@@ -883,6 +883,10 @@ $(document).ready(function() {
         $("#youtubeModal").modal("toggle");
     });
 
+    $(document).on("click","#battle-details", function(){
+        $("#detailModal").modal("toggle");
+    });
+
     //When a dropdown choice is made on the gym page stage the gym leader so we can use it to load the cards for the gym loadout
     $(document).on("click","#battle", function(){
         if(battleGym){
@@ -890,8 +894,8 @@ $(document).ready(function() {
             gymType = $(".gym-card").data("type");
             
             //console log both sets of data so we can see what we have to work with
-            console.log(`Our types: ${battleType}`)
-            console.log(`Gym type: ${gymType}`)
+            //console.log(`Our types: ${battleType}`)
+            //console.log(`Gym type: ${gymType}`)
             
             //run battleSim function liam is working on
             gymBattle(battleType,gymType,gymCount);

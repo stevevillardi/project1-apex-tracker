@@ -2,7 +2,7 @@ $(document).ready(function() {
     //create table based on passed array of pokemon
     function buildPokedexTable(array){
         array.sort(function(a,b) { return parseInt(a.number) - parseInt(b.number) } );
-        console.log(array);
+        //console.log(array);
         for(i=0; i< array.length;i++){
             let table = $("#pokedex-table");
             let tableNum = array[i].number;
@@ -32,7 +32,7 @@ $(document).ready(function() {
     function updateModal(pokemon, youtube){
         $(".modal-body").empty()
         let video = youtube.items[0].id.videoId
-        console.log(video)
+        //console.log(video)
         let youtubeIframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
         $("#youtubeModalLabel").text(`Youtube Search Results: ${pokemon}`)
         $(".modal-body").append(youtubeIframe)
@@ -43,7 +43,7 @@ $(document).ready(function() {
             method: "GET"
         }).then(function (response) {
             updateModal(pokeName, response)
-            console.log(response);
+            //console.log(response);
         })
     }
     //grab pokemon from friebase so we can create table
@@ -69,16 +69,14 @@ $(document).ready(function() {
             buildPokedexTable(pokedexArray);
         }
         else{
-            console.log("nothing to load in firebase")
+            //console.log("nothing to load in firebase")
         }
     });
     $(document).on("click",".table-secondary", function(event){
         let pokeName = $(this).attr("id")
-        console.log(pokeName);
+        //console.log(pokeName);
         ajaxYoutube(pokeName);
         
         $("#youtubeModal").modal("toggle");
     })
-
-    /*<iframe width="560" height="315" src="https://www.youtube.com/embed/ydxAZ32hFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*/
 });

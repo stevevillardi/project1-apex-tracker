@@ -32,6 +32,10 @@
                 <a class="nav-link" href="faq.html">FAQ</a>
               </li>
           </ul>
+          <form class="form-inline my-2 mr-3">
+                <button type="button" class="btn btn-outline-success" id="battle-details">Details</button>
+                <!-- Button trigger modal -->
+            </form>
           <div class="btn-group my-2 mr-3">
               <button class="btn btn-outline-success btn dropdown-toggle" id="gym-dropdown" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
@@ -218,6 +222,48 @@
                     <!--<h5 id="overall-results-display">Your battle party is: <span class="great">SUPER EFFECTIVE</span></h5> -->
                     <h5 id="typed">choose a gym leader from the dropdown and click on the battle button to see how your party stack up against the competition!</h5>
                 </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" id="detailModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailModalLabel">Gym Leader Battle Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-auto">
+                    <p>Select a Gym Leader from the dropdown menu on the top left to begin a battle party efficiency estimate. Your current parties composition will be compared against the selected Gym Leader and their battle cards will be color coded according their efficiency against the selected Gym Type. Below is the color coding key based on damage effect.</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 mx-auto text-center mb-3">
+                                <button class="btn btn-dark">No Effect</button>
+                                <button class="btn btn-danger">Half Damage</button>
+                                <button class="btn btn-info">Normal Damage</button>
+                                <button class="btn btn-success">Double Damage</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <p>Based on your overall effectiveness you will be assigned one of the following scores:</p>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col-sm-12 text-center">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span style="font-size: 1rem" class="poor">NOT VERY EFFECTIVE</span></li>
+                                    <li class="list-group-item"><span style="font-size: 1rem" class="normal">NORMAL EFFECTIVENESS</span></li>
+                                    <li class="list-group-item"><span style="font-size: 1rem" class="great">SUPER EFFECTIVE</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
