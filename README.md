@@ -1,4 +1,4 @@
-# project1-pokepedia
+# Pokepedia
 
 
 # Mockup Screenshot of HomePage
