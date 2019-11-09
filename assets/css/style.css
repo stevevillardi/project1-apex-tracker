@@ -122,6 +122,12 @@ tbody{
     height: 225px;
 }
 
+.btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
+    background-color: #ced4da;
+    border-color: #ced4da;
+    color: #fff;
+}
+
 .party-card img{
     position: absolute;
     top: -25px;

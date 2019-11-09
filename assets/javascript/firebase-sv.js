@@ -26,9 +26,9 @@ let gymRef = database.ref("/gym-members");
 
 // Attach an asynchronous callback to read the data at our posts reference
 partyRef.on("value", function(snapshot) {
-    console.log(snapshot.val());
+    //console.log(snapshot.val());
   }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
+    //console.log("The read failed: " + errorObject.code);
 });
 
 //Initial function to seed data into firebase, only left in incase we need to reload database data. otherwise should not be ran again.
@@ -76,7 +76,7 @@ function LoadPokedex() {
             })
             .done(function(results) {
                 pokeURL = results.species.url
-                console.log(pokeURL)
+                //console.log(pokeURL)
 
                 $.ajax({
                     url: pokeURL,
